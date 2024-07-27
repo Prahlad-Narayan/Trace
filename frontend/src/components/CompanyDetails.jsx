@@ -7,6 +7,7 @@ import L from 'leaflet';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
+// Fix for default Leaflet icon URLs
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -14,6 +15,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
+// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function CompanyDetails() {
@@ -24,6 +26,7 @@ function CompanyDetails() {
   const [allCompanies, setAllCompanies] = useState([]);
   
   useEffect(() => {
+    // Fetch company details, locations, and all companies data
     axios.get(`http://localhost:8000/companies/${id}`)
       .then(response => setCompany(response.data))
       .catch(error => console.error('Error fetching company details:', error));
@@ -37,11 +40,13 @@ function CompanyDetails() {
       .catch(error => console.error('Error fetching all companies:', error));
   }, [id]);
 
+  // Calculate branch counts for all companies
   const branchCounts = allCompanies.map(company => {
     const count = locations.filter(location => location.company_id === company.company_id).length;
     return { name: company.name, count };
   });
 
+  // Prepare data for the bar chart
   const data = {
     labels: branchCounts.map(company => company.name),
     datasets: [
@@ -55,6 +60,7 @@ function CompanyDetails() {
     ],
   };
 
+  // Chart options with y-axis step size set to 1
   const options = {
     scales: {
       x: {
@@ -67,6 +73,7 @@ function CompanyDetails() {
     },
   };
 
+  // Display loading state if company data is not yet available
   if (!company) return <div>Loading...</div>;
 
   return (

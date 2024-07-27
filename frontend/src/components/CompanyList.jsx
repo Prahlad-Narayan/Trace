@@ -7,11 +7,13 @@ function CompanyList() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    // Fetch company data from the API
     axios.get('http://localhost:8000/companies')
       .then(response => setCompanies(response.data))
       .catch(error => console.error('Error fetching companies:', error));
   }, []);
 
+  // Filter companies based on the search term
   const filteredCompanies = companies.filter(company =>
     company.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

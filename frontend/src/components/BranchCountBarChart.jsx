@@ -1,4 +1,3 @@
-// src/components/BranchCountBarChart.jsx
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
@@ -24,6 +23,7 @@ function BranchCountBarChart({ companyId }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch locations and companies data from the API
         const locationsResponse = await axios.get(`http://localhost:8000/companies/${companyId}/locations`);
         const companiesResponse = await axios.get(`http://localhost:8000/companies`);
 
@@ -71,6 +71,7 @@ function BranchCountBarChart({ companyId }) {
             tooltip: {
               callbacks: {
                 label: function(context) {
+                  // Custom tooltip label
                   const label = context.dataset.label || '';
                   const value = context.raw;
                   return `${label}: ${value}`;
@@ -80,7 +81,7 @@ function BranchCountBarChart({ companyId }) {
           },
           scales: {
             x: {
-              beginAtZero: true,
+              beginAtZero: true, // Ensure the x-axis starts at zero
             },
           },
         }}
