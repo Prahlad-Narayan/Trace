@@ -71,60 +71,6 @@ A web application that allows users to view a list of companies, search for spec
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/company-location-app.git
-   cd company-location-app
-# Company Location and Branch Distribution Web App
-
-This web application provides users with detailed information about companies, including their locations and branch distribution. The application features interactive maps and bar charts to visualize company locations and branch distribution effectively.
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Testing](#testing)
-
-## Overview
-
-This project addresses the need for users to view detailed information about companies in a clear and interactive manner. The application consists of two main pages: the Company List Page and the Company Details Page.
-
-### Problem
-
-Users need a simple, interactive way to access company information, including location and branch distribution.
-
-### Solution
-
-A web application that allows users to view a list of companies, search for specific companies, and see detailed information including maps and charts on the Company Details Page.
-
-## Features
-
-- **Interactive Maps**: View company locations using interactive maps powered by Leaflet.
-- **Bar Charts**: Visualize branch distribution with dynamic charts from Chart.js.
-- **Responsive Design**: The application is fully responsive, adapting to mobile, tablet, and desktop screens.
-- **Search Functionality**: Easily search for companies by name.
-
-## Technologies Used
-
-- **Frontend**: React, Tailwind CSS, Leaflet, Chart.js
-- **Backend**: FastAPI
-- **Data Storage**: CSV files for company and location data
-- **Containerization**: Docker
-
-## Installation
-
-### Prerequisites
-
-- Node.js and npm
-- Docker and Docker Compose
-
-### Setup
-
-1. **Clone the repository**
-
-   ```bash
    git clone https://github.com/Prahlad-Narayan/Trace
    cd Trace
 
